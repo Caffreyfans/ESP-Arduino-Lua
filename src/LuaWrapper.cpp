@@ -1,5 +1,4 @@
 #include "LuaWrapper.h"
-
 extern "C" {
   static int lua_wrapper_print (lua_State *L) {
     int n = lua_gettop(L);  /* number of arguments */
@@ -29,6 +28,7 @@ LuaWrapper::LuaWrapper() {
   luaopen_table(_state);
   luaopen_string(_state);
   luaopen_math(_state);
+  luaopen_net(_state);
   lua_register(_state, "print", lua_wrapper_print);
 }
 
